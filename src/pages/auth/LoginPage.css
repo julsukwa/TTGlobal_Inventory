@@ -1,0 +1,133 @@
+/* FULL SCREEN ROOT FIX */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("../../assets/LoginBackground.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-family: Arial, sans-serif;
+}
+/* BLUE OVERLAY LIKE YOUR DESIGN */
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(180, 210, 230, 0.35);
+  backdrop-filter: blur(3px);
+}
+
+/* LOGIN CARD */
+.login-card {
+  position: relative;
+  width: 360px;
+  max-width: 90vw;
+  background: var(--color-white);
+
+  padding: 30px 28px;
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-lg);
+
+  text-align: center;
+  z-index: 2;
+}
+
+/* LOGO */
+.logo {
+  width: 230px;
+  margin-bottom: 10px;
+}
+
+
+.subtitle {
+  margin: 5px 0 15px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: #eee;
+  margin: 15px 0;
+}
+
+/* LABELS */
+label {
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+/* INPUT GROUP */
+.input-group {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #ddd;
+  border-radius: var(--radius-sm);
+
+  padding: 8px 10px;
+  background: var(--color-white);
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 13px;
+}
+
+/* ICONS */
+.icon {
+  margin-right: 8px;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.eye {
+  color: #666;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* BUTTON */
+.login-btn {
+  width: 100%;
+  margin-top: 30px;
+
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+  color: var(--color-white);
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  opacity: 0.9;
+}

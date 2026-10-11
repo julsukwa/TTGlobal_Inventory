@@ -1,0 +1,613 @@
+.scan-page {
+  width: 100%;
+}
+
+.scan-breadcrumb {
+  font-size: 12px;
+  color: var(--color-text-faint);
+  margin-bottom: 12px;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.scan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.scan-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.scan-header p {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.scan-back-btn {
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid #dbeafe;
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.scan-back-btn:hover { background: #eff6ff; }
+
+/* ── Context banner ───────────────────────────────────────────────────────── */
+
+.scan-context-banner {
+  display: flex;
+  align-items: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  gap: 0;
+}
+
+.scan-context-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  flex: 1;
+  color: var(--color-primary);
+}
+
+.scan-context-item:first-child { padding-left: 0; }
+
+.scan-context-item > div span {
+  display: block;
+  font-size: 11px;
+  color: var(--color-text-faint);
+  margin-bottom: 2px;
+}
+
+.scan-context-item > div p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.scan-context-label-icon {
+  font-size: 16px;
+}
+
+.scan-count {
+  color: var(--color-primary) !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+}
+
+.scan-context-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--color-border-light);
+  flex-shrink: 0;
+}
+
+/* ── Body layout (v2 — two-column methods grid, session table full width) ──── */
+
+.scan-methods-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+  align-items: start;
+}
+
+/* ── Scanner input card ───────────────────────────────────────────────────── */
+
+.scan-input-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-surface);
+  border-radius: var(--radius-2xl);
+  padding: 22px;
+  align-self: start;
+}
+
+/* ── Method section headings (v2 — Method 1 / Bulk Add) ───────────────────── */
+
+.scan-method-heading {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 var(--space-1);
+}
+
+/* ── Bulk Add card (v2 — unified List Number / Batch ID lookup) ──────────────── */
+/* Matches .scan-input-card's box treatment so both method cards read as one
+   consistent pair sitting side by side. */
+
+.scan-bulk-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-surface);
+  border-radius: var(--radius-2xl);
+  padding: 22px;
+  align-self: start;
+}
+
+.bulk-type-select {
+  height: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-md);
+  background: var(--color-white);
+  color: var(--color-text-body);
+  outline: none;
+  cursor: pointer;
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+.bulk-type-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.bulk-unified-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.scan-bulk-input {
+  flex: 1;
+  height: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0 var(--space-4);
+  font-size: var(--font-size-md);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.scan-bulk-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+/* Skipped-count info feedback — shares the base .scan-feedback box (padding,
+   radius, flex) with .scan-feedback-error/-success, adding its own colour
+   and the space-between layout needed for the dismiss button. */
+.scan-feedback-info {
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  justify-content: space-between;
+}
+
+.scan-dismiss-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-faint);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.scan-dismiss-btn:hover {
+  color: var(--color-text-body);
+}
+
+/* ── Shipment disambiguation modal (Method 2) ─────────────────────────────── */
+
+.scan-shipment-options {
+  margin-top: var(--space-4);
+}
+
+.scan-shipment-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-2);
+  background: var(--color-white);
+}
+
+.scan-shipment-option > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scan-shipment-option strong {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.scan-shipment-option span,
+.scan-shipment-option p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Scoped override of the shared Button component (primary variant) so the
+   per-row "Select" action reads as a compact outlined button rather than the
+   full-size filled button used elsewhere in the app. */
+.scan-shipment-option .ui-btn {
+  height: 34px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-primary);
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.scan-shipment-option .ui-btn:hover {
+  background: var(--color-surface);
+}
+
+/* ── Source pill (session table) ──────────────────────────────────────────── */
+
+.scan-source-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* Per-source colour variants — not currently applied by ScanItemsPage.tsx,
+   which renders every pill with the single .scan-source-pill class above
+   regardless of source. Defined here so a follow-up className tweak
+   (e.g. `scan-source-pill source-${item.source}`) lights these up for free. */
+.source-pill.source-scan {
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+}
+
+.source-pill.source-list {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.source-pill.source-batch {
+  background: var(--color-issued-bg);
+  color: var(--color-issued-text);
+}
+
+.scan-input-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  color: var(--color-primary);
+}
+
+.scan-input-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.scan-input-desc {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+
+.scan-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.scan-input-wrap {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  transition: box-shadow 0.15s;
+}
+
+.scan-input-has-error .scan-asset-input {
+  border-color: var(--color-danger) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+.scan-input-success .scan-asset-input {
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.08);
+}
+
+.scan-asset-input {
+  width: 100%;
+  height: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0 14px;
+  font-size: 14px;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 0.04em;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.scan-asset-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.scan-add-btn {
+  height: 42px;
+  padding: 0 18px;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.scan-add-btn:hover:not(:disabled) { background: var(--color-primary-dark); }
+.scan-add-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+/* Feedback */
+.scan-feedback {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.scan-feedback-error {
+  background: #fef2f2;
+  color: var(--color-danger-text);
+  border: 1px solid #fecaca;
+}
+
+.scan-feedback-success {
+  background: #f0fdf4;
+  color: var(--color-success-text);
+  border: 1px solid #bbf7d0;
+}
+
+/* Hints */
+.scan-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.scan-hint span {
+  font-size: 11px;
+  color: var(--color-text-faint);
+}
+
+/* ── Session table card ───────────────────────────────────────────────────── */
+
+.scan-session-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-surface);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-5);
+}
+
+.scan-session-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scan-session-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.scan-clear-btn {
+  font-size: 12px;
+  color: var(--color-danger);
+  background: none;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.scan-clear-btn:hover { background: #fef2f2; }
+
+/* Empty state */
+.scan-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  color: #cbd5e1;
+  gap: 8px;
+}
+
+.scan-empty p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+}
+
+.scan-empty span {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+/* Table */
+.scan-table-wrap {
+  overflow-x: auto;
+}
+
+.scan-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scan-table th {
+  background: var(--color-surface-light);
+  text-align: center;
+  padding: 12px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-body);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.scan-table td {
+  padding: 12px 14px;
+  border-top: 1px solid var(--color-border-light);
+  font-size: 13px;
+  text-align: center;
+  color: var(--color-text-body);
+}
+
+.scan-row-num {
+  color: var(--color-text-faint) !important;
+  font-size: 12px !important;
+}
+
+.scan-asset-id {
+  color: var(--color-primary) !important;
+  font-weight: 700;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px !important;
+}
+
+.scan-specs {
+  font-size: 11px !important;
+  color: var(--color-text-muted) !important;
+  max-width: 200px;
+}
+
+.scan-status-pill {
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.scan-status-ok     { background: var(--color-success-bg); color: var(--color-success-text); }
+.scan-status-faulty { background: var(--color-danger-bg); color: var(--color-danger-text); }
+
+.scan-remove-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  color: var(--color-danger);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.scan-remove-btn:hover { background: #fef2f2; }
+
+/* ── Footer actions ───────────────────────────────────────────────────────── */
+
+.scan-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.scan-cancel-btn {
+  height: 42px;
+  padding: 0 20px;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--color-text-body);
+}
+
+.scan-cancel-btn:hover { background: var(--color-surface-light); }
+
+.scan-review-btn {
+  height: 42px;
+  padding: 0 24px;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.scan-review-btn:hover:not(:disabled) { background: var(--color-primary-dark); }
+.scan-review-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .scan-methods-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .scan-context-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .scan-context-divider { display: none; }
+
+  .scan-context-item { padding: 0; }
+
+  .scan-footer-actions { flex-direction: column; }
+
+  .scan-review-btn,
+  .scan-cancel-btn { width: 100%; justify-content: center; }
+}

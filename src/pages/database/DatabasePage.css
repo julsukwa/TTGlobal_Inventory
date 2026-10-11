@@ -1,0 +1,738 @@
+.db-page {
+  width: 100%;
+  max-width: 1600px;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.db-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.db-header h1 {
+  margin: 0;
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.db-header p {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+}
+
+.db-header-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* ── Summary strip ────────────────────────────────────────────────────────── */
+
+.db-summary-strip {
+  background: var(--color-white);
+  border: 1px solid var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 18px 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 18px;
+}
+
+.db-summary-item {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: 0 var(--space-4);
+}
+
+.db-summary-item:not(:last-child) {
+  border-right: 1px solid var(--color-border-light);
+}
+
+.db-summary-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.db-icon-blue   { background: var(--color-primary-soft); color: var(--color-primary); }
+.db-icon-green  { background: var(--color-success-bg); color: var(--color-success); }
+.db-icon-red    { background: var(--color-danger-bg); color: var(--color-danger-dark); }
+.db-icon-indigo { background: var(--color-issued-bg); color: var(--color-issued-text); }
+
+.db-summary-item span {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: 5px;
+}
+
+.db-summary-item h3 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+/* ── Table card ───────────────────────────────────────────────────────────── */
+
+.db-table-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-surface);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-5);
+}
+
+/* ── Toolbar (search + filters) ───────────────────────────────────────────── */
+
+.db-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: var(--space-4);
+}
+
+.db-search {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 38px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-light);
+  color: var(--color-text-muted);
+}
+
+.db-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12.5px;
+  color: var(--color-navy);
+  width: 100%;
+}
+
+.db-filter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 38px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-light);
+  color: var(--color-text-muted);
+}
+
+.db-filter select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12.5px;
+  color: var(--color-navy);
+  cursor: pointer;
+  max-width: 160px;
+}
+
+.db-clear-filters-btn {
+  height: 38px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-light);
+  color: var(--color-text-muted);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.db-clear-filters-btn:hover {
+  background: var(--color-surface-muted);
+  color: var(--color-text-body);
+}
+
+/* ── Old-issued display toggle — deliberately understated (small checkbox,
+   muted text) since it's a display-only convenience, not a primary filter. ── */
+
+.db-issued-toggle-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+}
+
+.db-issued-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.db-issued-toggle input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  accent-color: var(--color-text-muted);
+}
+
+.db-issued-toggle-note {
+  font-size: 10.5px;
+  color: var(--color-text-faint);
+  max-width: 280px;
+  line-height: 1.3;
+}
+
+/* ── Table ────────────────────────────────────────────────────────────────── */
+
+.db-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+}
+
+.db-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.db-table thead th {
+  text-align: center;
+  padding: 13px 14px;
+  background: var(--color-surface-light);
+  color: var(--color-text-body);
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+  border-bottom: 1px solid var(--color-border-light);
+  white-space: nowrap;
+}
+
+.db-table tbody td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--color-surface-muted);
+  color: var(--color-text-body);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Actions stay pinned to the right edge so the row menu remains reachable when
+   the table is wider than its container. Invisible when everything fits. */
+.db-table .db-actions-col {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+  background: var(--color-white);
+}
+
+.db-table thead .db-actions-col { background: var(--color-surface-light); }
+.db-table tbody tr:hover .db-actions-col { background: var(--color-surface-light); }
+
+.db-table tbody tr:last-child td { border-bottom: none; }
+.db-table tbody tr:hover { background: var(--color-surface-light); }
+
+.db-asset-id {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-family: ui-monospace, monospace;
+  font-size: 11.5px;
+}
+
+.db-batch-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-purple-bg);
+  color: var(--color-purple-text);
+  font-size: 10.5px;
+  font-weight: 600;
+  font-family: ui-monospace, monospace;
+}
+
+.db-category-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.condition-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.condition-new    { background: var(--color-success-bg); color: #15803d; }
+.condition-refurb { background: var(--color-warning-bg); color: var(--color-warning-text); }
+.condition-used   { background: var(--color-danger-bg); color: #b91c1c; }
+
+.db-specs-cell {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.db-comment-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.db-comment-touch    { background: var(--color-purple-bg); color: var(--color-purple); }
+.db-comment-nontouch { background: var(--color-surface-muted); color: var(--color-text-slate); }
+.db-comment-blank    { color: var(--color-text-ghost); }
+
+.db-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.db-status-ok     { background: var(--color-success-bg); color: var(--color-success-text); }
+.db-status-faulty { background: var(--color-danger-bg); color: var(--color-danger-text); }
+.db-status-issued { background: var(--color-issued-bg); color: var(--color-issued-text); }
+
+.db-source-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.db-source-generated { background: var(--color-primary-soft); color: var(--color-primary); }
+.db-source-provided  { background: var(--color-surface-muted); color: var(--color-text-slate); }
+
+.db-date-cell {
+  font-size: 11.5px;
+}
+
+.db-fault-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.db-fault-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Row actions ──────────────────────────────────────────────────────────── */
+
+.db-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.db-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-slate);
+  background: var(--color-white);
+  color: var(--color-text-slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.db-action-btn:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary-soft-border);
+  color: var(--color-primary);
+}
+
+.db-menu-wrapper {
+  position: relative;
+}
+
+/* Fixed (not absolute) so the menu escapes the table wrap's overflow clipping;
+   its top/right are set from the trigger button's position in the TSX. */
+.db-row-menu {
+  position: fixed;
+  min-width: 170px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 20;
+  overflow: hidden;
+  text-align: left;
+}
+
+.db-row-menu button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  color: var(--color-text-body);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.db-row-menu button:hover {
+  background: var(--color-surface-light);
+}
+
+.db-menu-restore {
+  color: var(--color-primary) !important;
+}
+
+.db-empty-row {
+  text-align: center !important;
+  padding: 40px !important;
+  color: var(--color-text-faint) !important;
+  white-space: normal !important;
+}
+
+/* ── Footer / pagination ──────────────────────────────────────────────────── */
+
+.db-table-footer {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ── Asset information drawer ─────────────────────────────────────────────── */
+
+.db-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 200;
+  animation: db-fade-in 0.15s ease;
+}
+
+@keyframes db-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.db-drawer {
+  width: 420px;
+  max-width: 92vw;
+  height: 100%;
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-drawer);
+  animation: db-slide-in 0.2s ease;
+}
+
+@keyframes db-slide-in {
+  from { transform: translateX(24px); opacity: 0.6; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.db-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-5) 22px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.db-drawer-header h2 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-navy);
+}
+
+.db-drawer-close {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--color-surface-muted);
+  color: var(--color-text-slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.db-drawer-close:hover { background: var(--color-border-slate); }
+
+.db-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px;
+}
+
+.db-drawer-overview {
+  margin-bottom: var(--space-6);
+}
+
+.db-drawer-asset-id {
+  display: block;
+  font-family: ui-monospace, monospace;
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.db-drawer-overview h3 {
+  margin: 0 0 10px;
+  font-size: var(--font-size-xl);
+  color: var(--color-navy);
+}
+
+.db-drawer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.db-drawer-section {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.db-drawer-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.db-drawer-section h4 {
+  margin: 0 0 14px;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.db-drawer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.db-drawer-grid > div > span {
+  display: block;
+  font-size: 10.5px;
+  color: var(--color-text-faint);
+  margin-bottom: 3px;
+}
+
+.db-drawer-grid > div > p {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-navy);
+  font-weight: 500;
+}
+
+.db-drawer-full-col {
+  grid-column: 1 / -1;
+}
+
+/* Protected fields: still shown while editing, but greyed out. */
+.db-drawer-protected .db-drawer-grid > div > p {
+  color: var(--color-text-faint);
+}
+
+.db-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.db-edit-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-body);
+}
+
+.db-edit-full-col {
+  grid-column: 1 / -1;
+}
+
+.db-edit-grid input,
+.db-edit-grid select {
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 12.5px;
+  color: var(--color-navy);
+  background: var(--color-white);
+  outline: none;
+}
+
+.db-edit-grid textarea {
+  padding: var(--space-2) 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 12.5px;
+  color: var(--color-navy);
+  background: var(--color-white);
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.db-edit-grid input:focus,
+.db-edit-grid select:focus,
+.db-edit-grid textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.db-edit-grid input:disabled {
+  background: var(--color-surface-light);
+  color: var(--color-text-faint);
+  cursor: not-allowed;
+}
+
+.db-drawer-footer {
+  display: flex;
+  gap: 10px;
+  padding: 18px 22px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.db-drawer-btn-secondary {
+  flex: 1;
+  height: 42px;
+  border: 1px solid var(--color-border-slate);
+  background: var(--color-white);
+  color: var(--color-text-slate);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.db-drawer-btn-secondary:hover { background: var(--color-surface-light); }
+
+.db-drawer-btn-primary {
+  flex: 1;
+  height: 42px;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.db-drawer-btn-primary:hover { background: var(--color-primary-dark); }
+
+.db-drawer-btn-primary:disabled,
+.db-drawer-btn-secondary:disabled {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+/* ── Restore modal ────────────────────────────────────────────────────────── */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .db-summary-strip { grid-template-columns: 1fr 1fr; row-gap: var(--space-4); }
+  .db-summary-item:nth-child(2n) { border-right: none; }
+  .db-drawer-grid,
+  .db-edit-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .db-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .db-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .db-header-actions {
+    width: 100%;
+  }
+
+  .db-header-actions > * {
+    flex: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .db-summary-strip { grid-template-columns: 1fr; }
+  .db-summary-item { border-right: none !important; }
+  .db-drawer { width: 100%; max-width: 100vw; }
+}

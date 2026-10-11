@@ -1,0 +1,165 @@
+.asset-sticker {
+  position: relative;
+  box-sizing: border-box;
+  /* px fallback (50mm x 25mm at 96dpi), overridden by the exact mm values below */
+  width: 189px;
+  height: 94px;
+  width: 50mm;
+  max-width: 50mm;
+  height: 25mm;
+  max-height: 25mm;
+  margin: 0;
+  padding: 0;
+  background: var(--color-white);
+  border: 0.5px solid #ccc;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Title row spans the full sticker width (46mm, 2mm margins each side) so
+   the name is never squeezed into the narrower text column below — the QR
+   code only needs to be dodged by the category/specs/ID block, not the
+   title. It sits directly above .asset-sticker-info, which starts right
+   after it (top: 6mm = 2mm margin + 3.5mm title + 0.5mm gap). */
+.asset-sticker-title-row {
+  position: absolute;
+  left: 2mm;
+  top: 2mm;
+  right: 2mm;
+  height: 3.5mm;
+}
+
+.asset-sticker-title {
+  display: block;
+  overflow: hidden;
+}
+
+/* Text area and QR are absolutely positioned so the QR can never overlap text,
+   whatever the content length. A 2mm safe margin keeps content clear of the
+   label's curved corners on the left/right/bottom; the top margin instead
+   starts right below the title row (see above). */
+.asset-sticker-info {
+  position: absolute;
+  left: 2mm;
+  top: 6mm;
+  right: 17mm;
+  bottom: 2mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.asset-sticker-details {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.asset-sticker-category {
+  font-size: 5pt;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 0.3mm;
+  color: #111111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.asset-sticker-processor,
+.asset-sticker-specs,
+.asset-sticker-screen {
+  font-size: 6pt;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 0.3mm;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.asset-sticker-ids {
+  display: flex;
+  flex-direction: column;
+}
+
+.asset-sticker-asset-id {
+  font-family: "Courier New", monospace;
+  font-size: 9.5pt;
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 0.5mm;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.asset-sticker-batch {
+  font-size: 5pt;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #050505;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.asset-sticker-qr {
+  position: absolute;
+  right: 2mm;
+  /* Vertically centered within the 21mm safe content height (25mm sticker
+     minus the 2mm top/bottom safe margins): 2mm + (21mm - 13mm) / 2 = 6mm.
+     A fixed offset is used instead of top:50%+transform:translateY(-50%) —
+     that combination printed the QR cut off on the Zebra GK420d, since CSS
+     transforms are unreliable in some print rasterization pipelines with a
+     small fixed @page size. The sticker's dimensions are fixed, so a plain
+     top offset centers it identically without needing a transform. */
+  top: 8mm;
+  width: 12mm;
+  height: 12mm;
+}
+
+.asset-sticker-qr svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media print {
+  .asset-sticker {
+    background: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    border: none !important;
+  }
+
+  .asset-sticker * {
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .asset-sticker-title text {
+    fill: #000000 !important;
+  }
+
+  .asset-sticker-category,
+  .asset-sticker-processor,
+  .asset-sticker-specs,
+  .asset-sticker-screen {
+    color: #000000 !important;
+  }
+
+  .asset-sticker-asset-id {
+    color: #000000 !important;
+  }
+
+  .asset-sticker-batch {
+    color: #000000 !important;
+  }
+}
